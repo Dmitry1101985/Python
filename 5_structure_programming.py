@@ -1,5 +1,5 @@
 import pygame
-# something new
+# Trying to understand this git
 pygame.init()
 
 size = [800, 600]
