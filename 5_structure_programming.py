@@ -13,7 +13,10 @@ clock = pygame.time.Clock()
 start_pos_changes = 350
 changes = start_pos_changes
 flag = True
-fi = 220
+fi = 208
+start_fi = fi
+blue_in_sky = 100
+start_blue_in_sky = blue_in_sky
 
 def draw_basis(x: float, y: float, width: int, height: int) -> None:
     """Drawing basis for house
@@ -179,29 +182,41 @@ def draw_sun(x=60, y=100, radius=40) -> None:
     pygame.draw.circle(screen, "yellow", [x, y], radius)       
 
 
-def slide_sun(fi=235, fi_step=0.2) -> float:
-    """Sun run over the sky. Uses function draw_sun()
-      Start position at 235 degree. End position - 335.
-      Center of circle of sun traectory - 400, 600 (x, y)  
+def moving_sun(start_fi=235, fi =235, fi_step=0.2, start_blue_in_sky=155, blue_in_sky=155) -> tuple:
+    """Moving sun by arc, using function draw_sun() and changing sky colore to paint the sky 
+
     Args:
-        fi (int, optional): Start degree of sun position. Defaults to 235.
-        fi_step (float, optional): step to changing sun position from left to right. Defaults to 0.5.
+        start_fi (int, optional): start sun position degree. Defaults to 235.
+        fi (int, optional): current sun position degree. Need to change position. Defaults to 235.
+        fi_step (float, optional): step degree. Defaults to 0.2.
+        start_blue_in_sky (int, optional): starting blue value of sky in RGB. Defaults to 155.
+        blue_in_sky (int, optional): current blue value of sky in RGB. changeble.  Defaults to 155.
 
     Returns:
-        float: current degree position of sun
+        tuple: current sun position fi and current blue value of sky in RGB
     """
     x_0 = 400 #center
     y_0 = 600 #last line
     R = 500 #Radius of circle of sun traectory
-    
-    if fi < 335:
+    end_fi = (270 - start_fi) + 270 #calculate last sun position. Need for simmetric
+    steps_to_center = (270 - start_fi) / fi_step #calculate how many steps from start to middle
+    blue_step = (255 - start_blue_in_sky) / steps_to_center #calculate changing value of blue in RGB by one step
+    #if not end - increse fi
+    if fi < end_fi:
         fi += fi_step
+    #if sun in first half make sky more blue    
+    if fi < 270 and blue_in_sky < 255:
+        blue_in_sky += blue_step
+    elif fi > 270 and fi < end_fi: #if sun goes down make sky less blue
+        blue_in_sky -= blue_step
     
-    x_current = x_0 + R * math.cos(math.radians(fi))
-    y_current = y_0 + R * math.sin(math.radians(fi))
+    x_current = x_0 + R * math.cos(math.radians(fi)) #calculate current x-coordinate of sun position
+    y_current = y_0 + R * math.sin(math.radians(fi)) #calculate current y-coordinate of sun position
     
-    draw_sun(x_current, y_current)
-    return fi
+    draw_sun(x_current, y_current) #drawing sun by current coordinates
+    
+    return fi, blue_in_sky
+
 
 
 while not done:
@@ -216,10 +231,9 @@ while not done:
             done = True 
             
     # place code here
-    screen.fill("blue")
+    screen.fill((228, 172, blue_in_sky))
     changes, flag = spin_house(400, 550, 300, changes, start_pos_changes, flag)
-    fi = slide_sun(fi, 0.2)
-    
+    fi, blue_in_sky = moving_sun(start_fi, fi, 0.2, start_blue_in_sky, blue_in_sky)
       
     pygame.display.flip()
 pygame.quit()            
