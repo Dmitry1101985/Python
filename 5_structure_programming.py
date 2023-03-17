@@ -9,11 +9,9 @@ pygame.display.set_caption('House building')
 
 done = False
 clock = pygame.time.Clock()
-changes = 500
+start_pos_changes = 350
+changes = start_pos_changes
 flag = True
-
-
-# help(pygame.time.Clock())
 
 def draw_basis(x: float, y: float, width: int, height: int) -> None:
     """Drawing basis for house
@@ -30,7 +28,6 @@ def draw_basis(x: float, y: float, width: int, height: int) -> None:
     #drawing basis - rectangle
     pygame.draw.rect(screen, "black", [x, y, width, basics_height], 3)
     
-
 
 def draw_walls(x: float, y: float, width: int, height: int) -> None:
     """Drawing walls for house in
@@ -49,7 +46,6 @@ def draw_walls(x: float, y: float, width: int, height: int) -> None:
     #drawing walls - rectangle
     pygame.draw.rect(screen, "black", [walls_x, walls_y, walls_width, walls_height], 3)
     
-
 
 def draw_roof(x: float, y: float, width: int, height: int) -> None:
     """Drawing roof for house in
@@ -75,8 +71,6 @@ def draw_roof(x: float, y: float, width: int, height: int) -> None:
         3,
         )
     
-    
-
 
 def draw_window(x: float, y: float, width: int, height: int) -> None:
     """Drawing two simmetric windows for house in
@@ -118,7 +112,6 @@ def draw_door(x: float, y: float, width: int, height: int) -> None:
     pygame.draw.rect(screen, "black", [door_x, door_y, door_width, door_height], 3)
     
 
-
 def draw_house(x=250, y=300, height=200, width=300) -> None:
     """Function drawing house with main point with coordinates (x,y)
 
@@ -136,8 +129,52 @@ def draw_house(x=250, y=300, height=200, width=300) -> None:
     draw_roof(x, y, width, height)
     draw_window(x, y, width, height)
     draw_door(x, y, width, height)
-    
 
+
+def spin_house(x=250, y=300, height=200, changes=350, start_pos_changes=350, flag=True) -> tuple:
+    """Spinning house. Uses draw_house function 
+    and global variables changes and start_pos_changes.
+    House spinning by opyical illusion (changing house width)
+
+    Args:
+        x (int, optional): x coordinate to paste house. Defaults to 250.
+        y (int, optional): y coordinate to paste house. Defaults to 300.
+        height (int, optional): house height. Defaults to 200.
+        changes (int, optional): current value of house width. Defaults to 350.
+        start_pos_changes (int, optional): start value of house width. Defaults to 350.
+        flag (bool, optional): need to reduce house width or to increase. Defaults to True.
+
+    Returns:
+        tuple: changes and flag
+    """
+    
+    if flag :  # if need to reduse width 
+        if changes > 10: # and if its not last value
+            changes -= 10 #reducing house width
+    else: # else if need to increase
+        if changes < start_pos_changes: # and widht value isnt over
+            changes += 10 #increasing house width
+    
+    #changing flag
+    if changes == start_pos_changes and not flag:
+        flag = not flag
+    elif changes == 10 and flag:
+         flag = not flag
+    
+    draw_house(x, y, height, changes)
+      
+    return changes, flag
+
+
+def draw_sun(x=60, y=100, radius=40) -> None:
+    """Drawing yellow sun
+
+    Args:
+        x (int, optional): central x coordinate of circle (sun). Defaults to 60.
+        y (int, optional): central y coordinate of circle (sun). Defaults to 100.
+        radius (int, optional): radius of circle (sun). Defaults to 40.
+    """
+    pygame.draw.circle(screen, "yellow", [x, y], radius)       
 
 
 while not done:
@@ -148,28 +185,14 @@ while not done:
     for event in pygame.event.get():
         
         if event.type == pygame.QUIT:
-            
+ 
             done = True 
             
     # place code here
-    if flag :   
-        if changes > 10:
-            changes -= 10
-    else:
-        if changes < 500:
-            changes += 10
-    
-    if changes == 500 and not flag:
-        flag = not flag
-    elif changes == 10 and flag:
-         flag = not flag
-    
     screen.fill("white")
-    draw_house(400, 325, 200, changes)
-    
-    
-    
-    
+    changes, flag = spin_house(400, 550, 300, changes, start_pos_changes, flag)
+    draw_sun()
+      
     pygame.display.flip()
 pygame.quit()            
             
