@@ -1,4 +1,5 @@
 import pygame
+import math
 # Trying to understand this git
 pygame.init()
 
@@ -12,6 +13,7 @@ clock = pygame.time.Clock()
 start_pos_changes = 350
 changes = start_pos_changes
 flag = True
+fi = 220
 
 def draw_basis(x: float, y: float, width: int, height: int) -> None:
     """Drawing basis for house
@@ -177,6 +179,31 @@ def draw_sun(x=60, y=100, radius=40) -> None:
     pygame.draw.circle(screen, "yellow", [x, y], radius)       
 
 
+def slide_sun(fi=235, fi_step=0.2) -> float:
+    """Sun run over the sky. Uses function draw_sun()
+      Start position at 235 degree. End position - 335.
+      Center of circle of sun traectory - 400, 600 (x, y)  
+    Args:
+        fi (int, optional): Start degree of sun position. Defaults to 235.
+        fi_step (float, optional): step to changing sun position from left to right. Defaults to 0.5.
+
+    Returns:
+        float: current degree position of sun
+    """
+    x_0 = 400 #center
+    y_0 = 600 #last line
+    R = 500 #Radius of circle of sun traectory
+    
+    if fi < 335:
+        fi += fi_step
+    
+    x_current = x_0 + R * math.cos(math.radians(fi))
+    y_current = y_0 + R * math.sin(math.radians(fi))
+    
+    draw_sun(x_current, y_current)
+    return fi
+
+
 while not done:
     
     clock.tick(60)
@@ -189,9 +216,10 @@ while not done:
             done = True 
             
     # place code here
-    screen.fill("white")
+    screen.fill("blue")
     changes, flag = spin_house(400, 550, 300, changes, start_pos_changes, flag)
-    draw_sun()
+    fi = slide_sun(fi, 0.2)
+    
       
     pygame.display.flip()
 pygame.quit()            
