@@ -221,8 +221,7 @@ def moving_sun(start_fi=235, fi =235, fi_step=0.2, start_blue_in_sky=155, blue_i
 
 while not done:
     
-    clock.tick(60)
-    
+    clock.tick(60)   
     
     for event in pygame.event.get():
         
