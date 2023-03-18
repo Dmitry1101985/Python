@@ -1,4 +1,5 @@
 import sun_class
+import sky_class
 import pygame
 
 # Trying to understand this git
@@ -16,6 +17,8 @@ sun = sun_class.Sun()
 sun.set_start_position(200)
 sun.set_display(size)
 
+sky = sky_class.Sky()
+
 while not done:
     
     clock.tick(60)   
@@ -26,7 +29,7 @@ while not done:
             done = True 
         
     # place code here
-    screen.fill((228, 172, 255))
+    screen.fill(sky.get_color_day(sun.get_degree()))
            
     sun.move(screen) 
     
