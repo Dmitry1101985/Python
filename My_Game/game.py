@@ -33,9 +33,11 @@ while not done:
             
     # place code here
     screen.fill((228, 172, blue_in_sky))
-    changes, flag = house.spin_house(400, 550, 300, changes, start_pos_changes, flag)
+    # changes, flag = house.spin_house(400, 550, 300, changes, start_pos_changes, flag)
+    house.draw_house(400, 580, 250, 300)
     fi, blue_in_sky = sun.moving_sun(start_fi, fi, 0.2, start_blue_in_sky, blue_in_sky)
-      
+    # house.draw_house()
+    # sun.draw_sun()  
     pygame.display.flip()
 pygame.quit()            
             
