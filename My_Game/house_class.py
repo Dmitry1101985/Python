@@ -39,7 +39,7 @@ class House:
     
     def draw_roof(self, screen):
         roof_lp_x = self.x
-        roof_lp_y = self.y - 0.6 * self.height
+        roof_lp_y = self.y - 0.6 * self.height + 4
         roof_rp_x = self.x + self.width
         roof_rp_y = roof_lp_y
         roof_cp_x = self.x + self.width / 2
@@ -56,7 +56,7 @@ class House:
         walls_width = self.width * 0.9
         walls_height = self.height * 0.6
         walls_x = self.x + (self.width - walls_width) / 2
-        walls_y = self.y - walls_height
+        walls_y = self.y - walls_height + 3
         pygame.draw.rect(screen, "black", [walls_x, walls_y, walls_width, walls_height], 3)
     
     
@@ -64,7 +64,7 @@ class House:
         door_height = self.height * 0.4
         door_width = self.width * 0.2
         door_x = self.x + (self.width / 2) - (door_width / 2)
-        door_y = self.y - door_height
+        door_y = self.y - door_height + 3
         pygame.draw.rect(screen, "black", [door_x, door_y, door_width, door_height], 3)
     
     

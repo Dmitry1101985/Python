@@ -20,6 +20,9 @@ sun.set_display(size)
 sky = sky_class.Sky()
 
 house = house_class.House()
+house_2 = house_class.House()
+house_2.set_size(150, 100)
+house_2.set_position(200, 200)
 # house.set_size(300, 200)
 # house.set_position(350,680)
 
@@ -38,6 +41,7 @@ while not done:
     sun.move(screen) 
     
     house.draw(screen)
+    house_2.draw(screen)
     
     pygame.display.flip()
 pygame.quit()
