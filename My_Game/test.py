@@ -23,6 +23,7 @@ house = house_class.House()
 house_2 = house_class.House()
 house_2.set_size(150, 100)
 house_2.set_position(200, 200)
+house_2.set_line_thickness(1)
 # house.set_size(300, 200)
 # house.set_position(350,680)
 
