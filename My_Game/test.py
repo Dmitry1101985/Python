@@ -1,8 +1,8 @@
 import sun_class
 import sky_class
+import house_class
 import pygame
 
-# Trying to understand this git
 pygame.init()
 
 size = [1000, 700]
@@ -19,6 +19,10 @@ sun.set_display(size)
 
 sky = sky_class.Sky()
 
+house = house_class.House()
+# house.set_size(300, 200)
+# house.set_position(350,680)
+
 while not done:
     
     clock.tick(60)   
@@ -32,6 +36,8 @@ while not done:
     screen.fill(sky.get_color_day(sun.get_degree()))
            
     sun.move(screen) 
+    
+    house.draw(screen)
     
     pygame.display.flip()
 pygame.quit()
