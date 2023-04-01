@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>Icons/add_white_18dp.svg</file>
+  </qresource>
+</RCC>
