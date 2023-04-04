@@ -15,6 +15,10 @@ class Calc(QtWidgets.QMainWindow):
         self.ui.dev_2.hide()
         self.ui.dev_3.hide()
         self.ui.dev_4.hide()
+        
+        self.ui.label_85.setGeometry(QtCore.QRect(450, 780, 150, 21))
+        self.ui.label_85.setText("Powered by Python")
+        
         self.ui.btn_add_2.clicked.connect(lambda: self.ui.dev_2.show())
         self.ui.btn_del_2.clicked.connect(lambda: self.dellDev2())
         self.ui.btn_add_3.clicked.connect(lambda: self.ui.dev_3.show())
