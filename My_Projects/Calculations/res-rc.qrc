@@ -1,0 +1,18 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>Icons/construction_black_36dp.svg</file>
+    <file>Icons/construction_white_36dp.svg</file>
+    <file>Icons/engineering_black_36dp.svg</file>
+    <file>Icons/engineering_white_36dp.svg</file>
+    <file>Icons/PyQt-Logo.wine.svg</file>
+    <file>Icons/python-3.svg</file>
+    <file>Icons/settings_white_36dp.svg</file>
+    <file>Icons/print_white_36dp.svg</file>
+    <file>Icons/upload_file_white_36dp.svg</file>
+    <file>Icons/login_white_36dp.svg</file>
+    <file>Icons/dashboard_customize_white_36dp.svg</file>
+    <file>Icons/delete_white_36dp.svg</file>
+    <file>Icons/post_add_white_36dp.svg</file>
+    <file>Icons/add_white_18dp.svg</file>
+  </qresource>
+</RCC>
