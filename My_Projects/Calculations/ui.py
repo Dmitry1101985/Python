@@ -211,7 +211,6 @@ class Ui_MainWindow(object):
 "border: none;")
         self.q_max_dev.setAlignment(QtCore.Qt.AlignCenter)
         self.q_max_dev.setObjectName("q_max_dev")
-        
         self.label_12 = QtWidgets.QLabel(self.dev_1)
         self.label_12.setGeometry(QtCore.QRect(400, 130, 41, 21))
         font = QtGui.QFont()
@@ -235,7 +234,6 @@ class Ui_MainWindow(object):
 "border: none;")
         self.q_min_dev.setAlignment(QtCore.Qt.AlignCenter)
         self.q_min_dev.setObjectName("q_min_dev")
-        
         self.btn_add_2 = QtWidgets.QPushButton(self.dev_1)
         self.btn_add_2.setGeometry(QtCore.QRect(450, 220, 30, 30))
         self.btn_add_2.setStyleSheet("QPushButton {\n"
@@ -454,7 +452,6 @@ class Ui_MainWindow(object):
 "border: none;")
         self.q_max_dev_2.setAlignment(QtCore.Qt.AlignCenter)
         self.q_max_dev_2.setObjectName("q_max_dev_2")
-        
         self.label_23 = QtWidgets.QLabel(self.dev_2)
         self.label_23.setGeometry(QtCore.QRect(400, 130, 41, 21))
         font = QtGui.QFont()
@@ -478,7 +475,6 @@ class Ui_MainWindow(object):
 "border: none;")
         self.q_min_dev_2.setAlignment(QtCore.Qt.AlignCenter)
         self.q_min_dev_2.setObjectName("q_min_dev_2")
-        
         self.btn_add_3 = QtWidgets.QPushButton(self.dev_2)
         self.btn_add_3.setGeometry(QtCore.QRect(450, 220, 30, 30))
         self.btn_add_3.setStyleSheet("QPushButton {\n"
@@ -592,7 +588,6 @@ class Ui_MainWindow(object):
 "border: none;")
         self.q_max_go.setAlignment(QtCore.Qt.AlignCenter)
         self.q_max_go.setObjectName("q_max_go")
-        
         self.label_35 = QtWidgets.QLabel(self.frame_3)
         self.label_35.setGeometry(QtCore.QRect(160, 10, 81, 21))
         font = QtGui.QFont()
@@ -618,7 +613,6 @@ class Ui_MainWindow(object):
 "border: none;")
         self.q_min_go.setAlignment(QtCore.Qt.AlignCenter)
         self.q_min_go.setObjectName("q_min_go")
-        
         self.frame_4 = QtWidgets.QFrame(self.centralwidget)
         self.frame_4.setGeometry(QtCore.QRect(510, 70, 221, 71))
         self.frame_4.setStyleSheet("background-color: rgba(255,255,255,20);\n"
@@ -652,7 +646,6 @@ class Ui_MainWindow(object):
 "border: none;")
         self.gl_type.setAlignment(QtCore.Qt.AlignCenter)
         self.gl_type.setObjectName("gl_type")
-        
         self.label_39 = QtWidgets.QLabel(self.frame_4)
         self.label_39.setGeometry(QtCore.QRect(10, 40, 51, 21))
         font = QtGui.QFont()
@@ -677,7 +670,6 @@ class Ui_MainWindow(object):
 "background-color: none;\n"
 "border: none;")
         self.gl_min.setObjectName("gl_min")
-        
         self.gl_max = QtWidgets.QLabel(self.frame_4)
         self.gl_max.setGeometry(QtCore.QRect(180, 40, 31, 21))
         font = QtGui.QFont()
@@ -690,7 +682,6 @@ class Ui_MainWindow(object):
 "background-color: none;\n"
 "border: none;")
         self.gl_max.setObjectName("gl_max")
-        
         self.label_42 = QtWidgets.QLabel(self.frame_4)
         self.label_42.setGeometry(QtCore.QRect(120, 40, 51, 21))
         font = QtGui.QFont()
@@ -736,7 +727,6 @@ class Ui_MainWindow(object):
 "border: none;")
         self.q_max_sum.setAlignment(QtCore.Qt.AlignCenter)
         self.q_max_sum.setObjectName("q_max_sum")
-        
         self.label_45 = QtWidgets.QLabel(self.frame_5)
         self.label_45.setGeometry(QtCore.QRect(130, 10, 81, 21))
         font = QtGui.QFont()
@@ -762,7 +752,6 @@ class Ui_MainWindow(object):
 "border: none;")
         self.q_min_sum.setAlignment(QtCore.Qt.AlignCenter)
         self.q_min_sum.setObjectName("q_min_sum")
-        
         self.frame_6 = QtWidgets.QFrame(self.centralwidget)
         self.frame_6.setGeometry(QtCore.QRect(740, 70, 261, 71))
         self.frame_6.setStyleSheet("background-color: rgba(255,255,255,20);\n"
@@ -978,7 +967,6 @@ class Ui_MainWindow(object):
 "background-color: none;\n"
 "border: none;")
         self.t_max_k.setObjectName("t_max_k")
-        
         self.t_min_k = QtWidgets.QLabel(self.calc_data)
         self.t_min_k.setGeometry(QtCore.QRect(430, 40, 51, 21))
         font = QtGui.QFont()
@@ -989,7 +977,6 @@ class Ui_MainWindow(object):
 "background-color: none;\n"
 "border: none;")
         self.t_min_k.setObjectName("t_min_k")
-        
         self.label_47 = QtWidgets.QLabel(self.calc_data)
         self.label_47.setGeometry(QtCore.QRect(360, 40, 61, 21))
         font = QtGui.QFont()
@@ -1012,7 +999,6 @@ class Ui_MainWindow(object):
 "background-color: none;\n"
 "border: none;")
         self.p_max_bar.setObjectName("p_max_bar")
-        
         self.label_49 = QtWidgets.QLabel(self.calc_data)
         self.label_49.setGeometry(QtCore.QRect(490, 10, 101, 21))
         font = QtGui.QFont()
@@ -1035,7 +1021,6 @@ class Ui_MainWindow(object):
 "background-color: none;\n"
 "border: none;")
         self.p_min_bar.setObjectName("p_min_bar")
-        
         self.label_51 = QtWidgets.QLabel(self.calc_data)
         self.label_51.setGeometry(QtCore.QRect(490, 40, 101, 21))
         font = QtGui.QFont()
@@ -1058,7 +1043,6 @@ class Ui_MainWindow(object):
 "background-color: none;\n"
 "border: none;")
         self.p_max_abs.setObjectName("p_max_abs")
-        
         self.label_53 = QtWidgets.QLabel(self.calc_data)
         self.label_53.setGeometry(QtCore.QRect(670, 10, 101, 21))
         font = QtGui.QFont()
@@ -1081,7 +1065,6 @@ class Ui_MainWindow(object):
 "background-color: none;\n"
 "border: none;")
         self.p_min_abs.setObjectName("p_min_abs")
-        
         self.label_55 = QtWidgets.QLabel(self.calc_data)
         self.label_55.setGeometry(QtCore.QRect(670, 40, 101, 21))
         font = QtGui.QFont()
@@ -1104,7 +1087,6 @@ class Ui_MainWindow(object):
 "background-color: none;\n"
 "border: none;")
         self.z_max.setObjectName("z_max")
-        
         self.label_57 = QtWidgets.QLabel(self.calc_data)
         self.label_57.setGeometry(QtCore.QRect(850, 10, 51, 21))
         font = QtGui.QFont()
@@ -1127,7 +1109,6 @@ class Ui_MainWindow(object):
 "background-color: none;\n"
 "border: none;")
         self.z_min.setObjectName("z_min")
-        
         self.label_59 = QtWidgets.QLabel(self.calc_data)
         self.label_59.setGeometry(QtCore.QRect(850, 40, 51, 21))
         font = QtGui.QFont()
@@ -1316,7 +1297,6 @@ class Ui_MainWindow(object):
 "border: none;")
         self.q_max_dev_3.setAlignment(QtCore.Qt.AlignCenter)
         self.q_max_dev_3.setObjectName("q_max_dev_3")
-        
         self.label_69 = QtWidgets.QLabel(self.dev_3)
         self.label_69.setGeometry(QtCore.QRect(400, 130, 41, 21))
         font = QtGui.QFont()
@@ -1340,7 +1320,6 @@ class Ui_MainWindow(object):
 "border: none;")
         self.q_min_dev_3.setAlignment(QtCore.Qt.AlignCenter)
         self.q_min_dev_3.setObjectName("q_min_dev_3")
-        
         self.btn_add_4 = QtWidgets.QPushButton(self.dev_3)
         self.btn_add_4.setGeometry(QtCore.QRect(450, 220, 30, 30))
         self.btn_add_4.setStyleSheet("QPushButton {\n"
@@ -1593,7 +1572,6 @@ class Ui_MainWindow(object):
 "border: none;")
         self.q_max_dev_4.setAlignment(QtCore.Qt.AlignCenter)
         self.q_max_dev_4.setObjectName("q_max_dev_4")
-        
         self.label_81 = QtWidgets.QLabel(self.dev_4)
         self.label_81.setGeometry(QtCore.QRect(400, 130, 41, 21))
         font = QtGui.QFont()
@@ -1617,7 +1595,6 @@ class Ui_MainWindow(object):
 "border: none;")
         self.q_min_dev_4.setAlignment(QtCore.Qt.AlignCenter)
         self.q_min_dev_4.setObjectName("q_min_dev_4")
-        
         self.btn_del_4 = QtWidgets.QPushButton(self.dev_4)
         self.btn_del_4.setGeometry(QtCore.QRect(410, 220, 30, 30))
         self.btn_del_4.setStyleSheet("QPushButton {\n"
