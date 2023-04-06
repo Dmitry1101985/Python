@@ -84,9 +84,8 @@ class Calc(QtWidgets.QMainWindow):
     
     def inputChange(self):
         for input in self.ui.inputs:
-            input.textChanged.connect(lambda: get_all_devices_q(self))    
+            input.textChanged.connect(lambda: get_all_data(self))    
    
-
 
 
 def calc_device_q(data: list, rnd):
@@ -135,7 +134,7 @@ def get_all_devices_q(self):
     
     q_max_sum.setText(str(round(sum, 2)))
     
-    min = 10000
+    min = 10
         
     for m in 1, 3, 5, 7:
         current = round(float(self.ui.outputs[m].text()), 3)
@@ -143,6 +142,79 @@ def get_all_devices_q(self):
             min = current
             
     q_min_sum.setText(str(min))    
+    
+
+def calc_metrology(self):
+    q_min_sum = round(float(self.ui.outputs[9].text()), 3)
+    q_max_sum = round(float(self.ui.outputs[8].text()), 2)
+    t_min_c = round(float(self.ui.inputs[29].text()), 2)
+    t_max_c = round(float(self.ui.inputs[28].text()), 2)
+    p_min_nad = round(float(self.ui.inputs[31].text()), 4)
+    p_max_nad = round(float(self.ui.inputs[30].text()), 4)
+    p_min_bar = 0.098
+    p_max_bar = 0.102
+    p_min_abs = p_min_nad + p_min_bar
+    p_max_abs = p_max_nad + p_max_bar
+    t_min_k = t_min_c + 273.15
+    t_max_k = t_max_c + 273.15
+    z_min = 1 - ((10.2*(p_max_abs + p_max_nad) - 6) * ((0.00345 * 0.60611) - 0.000446) + 0.015) * (1.3 - 0.0144 * ((t_min_c + 273.15) - 283))
+    z_max = 1 - ((10.2*(p_min_abs + p_min_nad) - 6) * ((0.00345 * 0.60611) - 0.000446) + 0.015) * (1.3 - 0.0144 * ((t_max_c + 273.15) - 283))
+    q_min_go = q_min_sum * t_min_k * 0.101325 * z_min / (p_max_abs * 293.15)
+    q_max_go = q_max_sum * t_max_k * 0.101325 * z_max / (p_min_abs * 293.15)
+    self.ui.outputs[10].setText(str(round(t_max_k, 2)))
+    self.ui.outputs[11].setText(str(round(t_min_k, 2)))
+    self.ui.outputs[12].setText(str(round(p_max_bar, 4)))
+    self.ui.outputs[13].setText(str(round(p_min_bar, 4)))
+    self.ui.outputs[14].setText(str(round(p_max_abs, 4)))
+    self.ui.outputs[15].setText(str(round(p_min_abs, 4)))
+    self.ui.outputs[16].setText(str(round(z_max, 5)))
+    self.ui.outputs[17].setText(str(round(z_min, 5)))
+    self.ui.outputs[18].setText(str(round(q_max_go, 2)))
+    self.ui.outputs[19].setText(str(round(q_min_go, 3)))
+
+
+def calc_gl_type(self):
+    q_max_go = float(self.ui.outputs[18].text())
+    q_min_go = float(self.ui.outputs[19].text())
+    q_max_gl = 2.5
+    q_min_gl = 0.016
+    gl_type = 'G1.6'
+    
+    if q_max_go <= 2.5 and q_min_go >= 0.016:
+        q_max_gl = 2.5
+        q_min_gl = 0.016
+        gl_type = 'G1.6'
+    elif q_max_go <= 4 and q_max_go > 2.5 and q_min_go >= 0.016:
+        q_max_gl = 4.0
+        q_min_gl = 0.016
+        gl_type = 'G2.5'
+    elif q_max_go <= 6 and q_max_go > 4 and q_min_go >= 0.016:
+        q_max_gl = 6.0
+        q_min_gl = 0.016
+        gl_type = 'G4'
+    elif q_max_go <= 10 and q_max_go > 6 and q_min_go >= 0.025:
+        q_max_gl = 10.0
+        q_min_gl = 0.025
+        gl_type = 'G6'
+    elif q_max_go <= 16 and q_max_go > 10 and q_min_go >= 0.1:
+        q_max_gl = 16.0
+        q_min_gl = 0.1
+        gl_type = 'G10'
+    else:
+        q_max_gl = 0
+        q_min_gl = 0
+        gl_type = 'None'
+        
+    self.ui.outputs[20].setText(str(q_min_gl))
+    self.ui.outputs[21].setText(str(q_max_gl))
+    self.ui.outputs[22].setText(gl_type)
+
+
+
+def get_all_data(self):
+    get_all_devices_q(self)
+    calc_metrology(self)
+    calc_gl_type(self)
     
     
 app = QtWidgets.QApplication([])
