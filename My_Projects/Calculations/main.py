@@ -29,7 +29,7 @@ class Calc(QtWidgets.QMainWindow):
         self.ui.btn_add_pg_3.clicked.connect(lambda: self.addPg3())
         self.ui.btn_add_pg_4.clicked.connect(lambda: self.addPg4())
         self.inputChange()
-        self.ui.pushButton_9.clicked.connect(lambda: get_all_devices_q(self))
+        # self.ui.pushButton_9.clicked.connect(lambda: get_all_devices_q(self))
         
         
         
@@ -84,7 +84,7 @@ class Calc(QtWidgets.QMainWindow):
     
     def inputChange(self):
         for input in self.ui.inputs:
-            input.textChanged.connect(lambda: self.ui.label.setText("TRUE"))    
+            input.textChanged.connect(lambda: get_all_devices_q(self))    
    
 
 
