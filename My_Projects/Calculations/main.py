@@ -36,17 +36,17 @@ class Calc(QtWidgets.QMainWindow):
         
     def addPg2(self):
         self.ui.n_max_q_2.setText('11.3')
-        self.ui.n_min_q_2.setText('0.32')
+        self.ui.n_min_q_2.setText('0.3')
         
     
     def addPg3(self):
         self.ui.n_max_q_3.setText('11.3')
-        self.ui.n_min_q_3.setText('0.32')
+        self.ui.n_min_q_3.setText('0.3')
         
         
     def addPg4(self):
         self.ui.n_max_q_4.setText('11.3')
-        self.ui.n_min_q_4.setText('0.32')
+        self.ui.n_min_q_4.setText('0.3')
         
         
     def dellDev2(self):
@@ -87,7 +87,13 @@ class Calc(QtWidgets.QMainWindow):
             input.textChanged.connect(lambda: self.ui.label.setText("TRUE"))    
    
 
-def calc_device(n_p, n_q, eff_coeff):
+
+
+def calc_device_q(data: list, rnd):
+    n_p = float(data[0].text())
+    n_q = float(data[1].text())
+    eff_coeff = float(data[2].text())
+    
     q = 0
     
     if n_q != 0 and n_p != 0:
@@ -99,14 +105,36 @@ def calc_device(n_p, n_q, eff_coeff):
     else:
         q = (n_p * 859.8) / (8100 * eff_coeff)
     
-    return round(q, 2), round(eff_coeff, 2)
-    
+    return round(q, rnd), round(eff_coeff, 3)
+
+
+
 
 def test(self):
+    y = 0
+    for x in 0, 2, 4, 6:
+        # first device
+        # max
+        x_2 = x + y * 5
+        q_max, ccd_max = calc_device_q(self.ui.inputs[0 + x_2:3 + x_2], 2)
+        q_sum = q_max * float(self.ui.inputs[6 + x_2].text())
+        self.ui.outputs[0 + x].setText(str(round(q_sum, 2)))
+        self.ui.inputs[2 + x_2].setText(str(ccd_max))
+        # min
+        q_min, ccd_min = calc_device_q(self.ui.inputs[3 + x_2:6 + x_2], 3)
+        self.ui.outputs[1 + x].setText(str(q_min))
+        self.ui.inputs[5 + x_2].setText(str(ccd_min))
+        y += 1
     
-    q, ccd = calc_device(float(self.ui.inputs[0].text()), float(self.ui.inputs[1].text()), float(self.ui.inputs[2].text()))
-    self.ui.outputs[0].setText(str(q))
-    self.ui.inputs[2].setText(str(ccd))
+    q_max_sum = self.ui.outputs[8]
+    q_min_sum = self.ui.outputs[9]
+    sum = 0
+    
+    for q in 0, 2, 4, 6:
+        sum += round(float(self.ui.outputs[q].text()), 2)
+    
+    q_max_sum.setText(str(round(sum, 2)))    
+    
     
 app = QtWidgets.QApplication([])
 
