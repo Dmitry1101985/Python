@@ -29,7 +29,7 @@ class Calc(QtWidgets.QMainWindow):
         self.ui.btn_add_pg_3.clicked.connect(lambda: self.addPg3())
         self.ui.btn_add_pg_4.clicked.connect(lambda: self.addPg4())
         self.inputChange()
-        self.ui.pushButton_9.clicked.connect(lambda: test(self))
+        self.ui.pushButton_9.clicked.connect(lambda: get_all_devices_q(self))
         
         
         
@@ -110,7 +110,7 @@ def calc_device_q(data: list, rnd):
 
 
 
-def test(self):
+def get_all_devices_q(self):
     y = 0
     for x in 0, 2, 4, 6:
         # first device
@@ -133,7 +133,16 @@ def test(self):
     for q in 0, 2, 4, 6:
         sum += round(float(self.ui.outputs[q].text()), 2)
     
-    q_max_sum.setText(str(round(sum, 2)))    
+    q_max_sum.setText(str(round(sum, 2)))
+    
+    min = 10000
+        
+    for m in 1, 3, 5, 7:
+        current = round(float(self.ui.outputs[m].text()), 3)
+        if min > current and current != 0:
+            min = current
+            
+    q_min_sum.setText(str(min))    
     
     
 app = QtWidgets.QApplication([])
