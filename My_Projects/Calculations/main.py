@@ -1,5 +1,6 @@
 import sys
 import os
+import openpyxl
 from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtWidgets import QTextEdit
 from ui import Ui_MainWindow
@@ -32,8 +33,9 @@ class Calc(QtWidgets.QMainWindow):
         self.ui.btn_add_pg_3.clicked.connect(lambda: self.addPg3())
         self.ui.btn_add_pg_4.clicked.connect(lambda: self.addPg4())
         self.createEditor()
-        self.ui.pushButton_7.clicked.connect(lambda: self.print_to_pdf())
-        self.ui.pushButton_7.setShortcut("Ctrl+P")
+        self.ui.pushButton_8.clicked.connect(lambda: self.print_to_pdf())
+        self.ui.pushButton_8.setShortcut("Ctrl+P")
+        self.ui.pushButton_7.clicked.connect(lambda: self.write_to_excel())
         self.inputChange()
         
     
@@ -46,7 +48,14 @@ class Calc(QtWidgets.QMainWindow):
         printer.setOutputFormat(QPrinter.PdfFormat)
         printer.setOrientation(QPrinter.Landscape)
         printer.setOutputFileName(os.path.join(os.path.dirname(__file__), 'screen.pdf'))
-        application.render(printer)   
+        application.render(printer)
+        
+    def write_to_excel(self):
+        wb = openpyxl.load_workbook(os.path.join(os.path.dirname(__file__), 'gl_calc.xlsx'))
+        sheet = wb['Sheet1']
+        sheet['B2'] = 'Hello, World!'
+        wb.save(os.path.join(os.path.dirname(__file__), 'gl_calc.xlsx'))
+        pass   
     
     def createEditor(self):
         self.textEdit = QTextEdit(self)
