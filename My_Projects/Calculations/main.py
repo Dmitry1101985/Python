@@ -1,6 +1,7 @@
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 from ui import Ui_MainWindow
+from PyQt5.QtPrintSupport import QPrinter, QPrintDialog
 
 
 class Calc(QtWidgets.QMainWindow):
@@ -29,7 +30,7 @@ class Calc(QtWidgets.QMainWindow):
         self.ui.btn_add_pg_3.clicked.connect(lambda: self.addPg3())
         self.ui.btn_add_pg_4.clicked.connect(lambda: self.addPg4())
         self.inputChange()
-        # self.ui.pushButton_9.clicked.connect(lambda: get_all_devices_q(self))
+        
         
         
         
@@ -57,6 +58,7 @@ class Calc(QtWidgets.QMainWindow):
         self.ui.eff_coef_max_2.setText('1')
         self.ui.eff_coef_min_2.setText('1')
         self.ui.quantity_2.setText('1')
+        get_all_data(self)
         self.ui.dev_2.hide()
         
     
@@ -68,6 +70,7 @@ class Calc(QtWidgets.QMainWindow):
         self.ui.eff_coef_max_3.setText('1')
         self.ui.eff_coef_min_3.setText('1')
         self.ui.quantity_3.setText('1')
+        get_all_data(self)
         self.ui.dev_3.hide()
         
         
@@ -79,19 +82,38 @@ class Calc(QtWidgets.QMainWindow):
         self.ui.eff_coef_max_4.setText('1')
         self.ui.eff_coef_min_4.setText('1')
         self.ui.quantity_4.setText('1')
+        get_all_data(self)
         self.ui.dev_4.hide()
         
     
     def inputChange(self):
         for input in self.ui.inputs:
-            input.textChanged.connect(lambda: get_all_data(self))    
-   
+            input.textChanged.connect(self.chek_data_and_calc)    
+            
+            
+    def chek_data_and_calc(self, text):
+        if text.replace(".", "").isdigit() and float(text) > 0:
+            get_all_data(self)
+        
 
 
 def calc_device_q(data: list, rnd):
-    n_p = float(data[0].text())
-    n_q = float(data[1].text())
-    eff_coeff = float(data[2].text())
+    
+    if data[0].text().replace(".", "").isdigit():
+        n_p = float(data[0].text())
+    else:
+        n_p = 0
+    
+    if data[1].text().replace(".", "").isdigit():
+        n_q = float(data[1].text())
+    else:
+        n_q = 0       
+    
+    if data[2].text().replace(".", "").isdigit():
+        eff_coeff = float(data[2].text())
+    else:
+        eff_coeff = 1
+    
     
     q = 0
     
@@ -222,4 +244,4 @@ app = QtWidgets.QApplication([])
 application = Calc()
 application.show()        
 
-sys.exit(app.exec())   
+sys.exit(app.exec())

@@ -84,15 +84,19 @@
     
 # словники - це множини, в яких зберігаються кортежи ключ-значення
 
-a_dict = {'Kyiv': 10, 
-          'Kharkiv': 20, 
-          'Odesa': 30, 
-          'Brovary' : 40, 
-          'Chernigiv': 50}
-a_dict['Kherson'] = 60
+# a_dict = {'Kyiv': 10, 
+#           'Kharkiv': 20, 
+#           'Odesa': 30, 
+#           'Brovary' : 40, 
+#           'Chernigiv': 50}
+# a_dict['Kherson'] = 60
 
-for key in a_dict:
-    print(key, a_dict[key])
+# for key in a_dict:
+#     print(key, a_dict[key])
     
-if 'Kherson' in a_dict:
-    print(True)
+# if 'Kherson' in a_dict:
+#     print(True)
+
+text ="0.000"
+
+print(float(text))
