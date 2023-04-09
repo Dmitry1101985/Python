@@ -1,7 +1,11 @@
 import sys
+import os
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QFileDialog, QDialog, QApplication, QTextEdit, QMainWindow
 from ui import Ui_MainWindow
-from PyQt5.QtPrintSupport import QPrinter, QPrintDialog
+from PyQt5.QtPrintSupport import QPrinter, QPrintDialog, QPrintPreviewDialog
+from PyQt5.Qt import QFileInfo
+from PyQt5.QtGui import QPainter
 
 
 class Calc(QtWidgets.QMainWindow):
@@ -29,10 +33,28 @@ class Calc(QtWidgets.QMainWindow):
         self.ui.btn_add_pg_2.clicked.connect(lambda: self.addPg2())
         self.ui.btn_add_pg_3.clicked.connect(lambda: self.addPg3())
         self.ui.btn_add_pg_4.clicked.connect(lambda: self.addPg4())
+        self.createEditor()
+        self.ui.pushButton_7.clicked.connect(lambda: self.print_to_pdf())
+        self.ui.pushButton_7.setShortcut("Ctrl+P")
         self.inputChange()
         
-        
-        
+    
+    def print_to_pdf(self):
+        # printer = QPrinter(QPrinter.HighResolution)
+        # dialog = QPrintDialog(printer, self)
+        # if dialog.exec_() == QPrintDialog.Accepted:
+        #     self.textEdit.print_(printer)
+        printer = QPrinter()
+        printer.setOutputFormat(QPrinter.PdfFormat)
+        printer.setOrientation(QPrinter.Landscape)
+        printer.setOutputFileName(os.path.join(os.path.dirname(__file__), 'screen.pdf'))
+        application.render(printer)   
+    
+    def createEditor(self):
+        self.textEdit = QTextEdit(self)
+        self.textEdit.hide()
+        self.textEdit.setText(self.ui.q_max_dev.text())
+            
         
         
     def addPg2(self):
