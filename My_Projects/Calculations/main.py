@@ -1,11 +1,9 @@
 import sys
 import os
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QFileDialog, QDialog, QApplication, QTextEdit, QMainWindow
+from PyQt5 import QtCore, QtWidgets
+from PyQt5.QtWidgets import QTextEdit
 from ui import Ui_MainWindow
-from PyQt5.QtPrintSupport import QPrinter, QPrintDialog, QPrintPreviewDialog
-from PyQt5.Qt import QFileInfo
-from PyQt5.QtGui import QPainter
+from PyQt5.QtPrintSupport import QPrinter
 
 
 class Calc(QtWidgets.QMainWindow):
