@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import QTextEdit, QMessageBox
 from ui import Ui_MainWindow
 from PyQt5.QtPrintSupport import QPrinter
 from pass_dialog import PasswordDialog
+from pass_change import ChangePassword
 
 
 class Calc(QtWidgets.QMainWindow):
@@ -37,7 +38,7 @@ class Calc(QtWidgets.QMainWindow):
         self.ui.pushButton_8.clicked.connect(lambda: self.print_to_pdf())
         self.ui.pushButton_8.setShortcut("Ctrl+P")
         self.ui.pushButton_7.clicked.connect(lambda: self.write_to_excel())
-        self.ui.pushButton_6.clicked.connect(lambda: self.show_pass_dialog())
+        self.ui.pushButton_6.clicked.connect(lambda: change_pass(self))
         self.inputChange()
         
         
@@ -402,32 +403,18 @@ def get_all_data(self):
     get_all_devices_q(self)
     calc_metrology(self)
     calc_gl_type(self)
+   
 
-def show_pass_dialog():
-        p_dialog = PasswordDialog()
-        p_dialog.showDialog()
-        if p_dialog.le.text() == '8552':
-            message = QMessageBox()
-            message.setIcon(QMessageBox.Information)
-            message.setWindowTitle('Password')
-            message.setText('Добрий день, Олександро!')
-            message.addButton(QMessageBox.Ok)
-            result = message.exec_()
-            return True
-        else:
-            message = QMessageBox()
-            message.setIcon(QMessageBox.Warning)
-            message.setWindowTitle('Password')
-            message.setText('Пароль не дійсний,\n Ти хто такий?!!!')
-            message.addButton(QMessageBox.Ok)
-            result = message.exec_()
-            return False    
+
+def change_pass(self):
+    pcd = ChangePassword()
+    pcd.exec()
     
-app = QtWidgets.QApplication([])
-
-application = Calc()
-application.setFixedSize(1011, 817)
-if show_pass_dialog():
+    
+    
+if __name__ == "__main__":    
+    app = QtWidgets.QApplication([])
+    application = Calc()
+    application.setFixedSize(1011, 817)
     application.show()        
-
-sys.exit(app.exec())
+    sys.exit(app.exec())

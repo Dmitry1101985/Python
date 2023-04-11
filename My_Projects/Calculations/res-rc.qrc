@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="icons">
+    <file>Icons/login_black_36dp.svg</file>
     <file>Icons/construction_black_36dp.svg</file>
     <file>Icons/construction_white_36dp.svg</file>
     <file>Icons/engineering_black_36dp.svg</file>
