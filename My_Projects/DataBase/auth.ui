@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AuthDialog</class>
+ <widget class="QDialog" name="AuthDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>380</width>
+    <height>219</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>Calibri</family>
+    <pointsize>10</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Авторизація</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="auth-rc.qrc">
+    <normaloff>:/icon/Icons/login_black_36dp.svg</normaloff>:/icon/Icons/login_black_36dp.svg</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(127, 172, 229, 255), stop:0.9801 rgba(6, 0, 173, 255), stop:1 rgba(0, 131, 68, 255));</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>40</y>
+     <width>55</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: white;
+background-color: none;
+border: none;</string>
+   </property>
+   <property name="text">
+    <string>Логін:</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="login">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>40</y>
+     <width>200</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(255,255,255,35);
+border: 2px solid rgba(255,255,255,90);
+border-radius: 5px;
+color: white;
+
+</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>15</x>
+     <y>90</y>
+     <width>71</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: white;
+background-color: none;
+border: none;</string>
+   </property>
+   <property name="text">
+    <string>Пароль:</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="password">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>90</y>
+     <width>200</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba(255,255,255,35);
+border: 2px solid rgba(255,255,255,90);
+border-radius: 5px;
+color: white;
+</string>
+   </property>
+   <property name="echoMode">
+    <enum>QLineEdit::Password</enum>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnCancel">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>160</y>
+     <width>100</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+color: white;
+background-color: rgba(255,255,255,50);
+border: none;
+border-radius: 9px;
+}
+QPushButton:hover{
+background-color: rgba(255,255,255,75);
+}
+QPushButton:pressed{
+background-color: rgba(255,255,255,95);
+}</string>
+   </property>
+   <property name="text">
+    <string>Відміна</string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>28</width>
+     <height>20</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnOk">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>160</y>
+     <width>100</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+color: white;
+background-color: rgba(255,255,255,50);
+border: none;
+border-radius: 9px;
+}
+QPushButton:hover{
+background-color: rgba(255,255,255,75);
+}
+QPushButton:pressed{
+background-color: rgba(255,255,255,95);
+}</string>
+   </property>
+   <property name="text">
+    <string>OK</string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>28</width>
+     <height>20</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnReg">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>160</y>
+     <width>100</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+color: white;
+background-color: rgba(255,255,255,50);
+border: none;
+border-radius: 9px;
+}
+QPushButton:hover{
+background-color: rgba(255,255,255,75);
+}
+QPushButton:pressed{
+background-color: rgba(255,255,255,95);
+}</string>
+   </property>
+   <property name="text">
+    <string>Реєстрація</string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>28</width>
+     <height>20</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QWidget" name="connection" native="true">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>12</width>
+     <height>12</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: white;
+border: solid 1px white;
+border-radius: 3px;</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>6</y>
+     <width>121</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: white;
+background-color: none;
+border: none;</string>
+   </property>
+   <property name="text">
+    <string>Статус з'єднання</string>
+   </property>
+  </widget>
+ </widget>
+ <resources>
+  <include location="auth-rc.qrc"/>
+ </resources>
+ <connections/>
+</ui>
