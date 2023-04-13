@@ -1,6 +1,9 @@
 import pymysql
 from config import host, user, password, db_name, port
 import hashlib
+from warn_mes import WM
+from PyQt5 import QtWidgets
+import sys
 
 
 class DB():
@@ -21,7 +24,10 @@ class DB():
             )
             return True
         except Exception as ex:
-            print(f'No connection\n {ex}')
+            message = WM()
+            message.set_text('Немає з`єднання з сервером!', str(ex))
+            message.show()
+            # print(f'No connection\n {ex}')
             return False
         
     
@@ -34,7 +40,9 @@ class DB():
                     rows = cursor.fetchall()
                     return rows
             except Exception as ex:
-                print(f'No connection with table\n {ex}')        
+                message = WM()
+                message.set_text('Немає з`єднання з таблицею даних!', str(ex))
+                message.show()        
             self.close_connection()
     
     
@@ -116,14 +124,22 @@ class DB():
         else:
             print('NO')
             print(self.hash_pass('8552'))
+
+
         
+if __name__ == "__main__":
+    app = QtWidgets.QApplication([])
+    db = DB()
+    # print(db.get_all_logins())
+    print(db.fetch_all())
+    sys.exit(app.exec())
             
-db = DB()
-# print(db.fetch_all())
-# print(db.get_password_by_login('admin'))
-# db.set_password_by_login('dmitry', '0110')
-# print(db.get_password_by_login('admin'))
-# db.test()
-# print(db.is_login_exist('admin'))
+# db = DB()
+# # print(db.fetch_all())
+# # print(db.get_password_by_login('admin'))
+# # db.set_password_by_login('dmitry', '0110')
+# # print(db.get_password_by_login('admin'))
+# # db.test()
+# # print(db.is_login_exist('admin'))
 # print(db.get_all_logins()[0])
 

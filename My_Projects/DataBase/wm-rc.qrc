@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>Icons/error_outline_black_48dp.svg</file>
+    <file>Icons/error_outline_white_48dp.svg</file>
+  </qresource>
+</RCC>
