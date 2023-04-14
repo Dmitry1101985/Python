@@ -4,6 +4,7 @@ import hashlib
 from auth_ui import Ui_AuthDialog
 from warn_mes import WM
 from db import DB
+from user import User
 
 
 class Auth(QtWidgets.QDialog):
@@ -28,9 +29,19 @@ class Auth(QtWidgets.QDialog):
     
     
     def auth(self):
+        
         if self.is_login_exists(self.trim_text(self.ui.login.text())):
             if self.is_password_correct(self.ui.password.text(), self.trim_text(self.ui.login.text())):
-                print('YES')
+                user = User()
+                db = DB()
+                user.set_user(db.get_user_by_login(self.trim_text(self.ui.login.text())))
+                if user.is_approved:
+                    print('Go to MAIN')
+                else:
+                    message = WM()
+                    message.set_text('Профіль не затверджений!', "Наразі адміністратор не затвердив Ваш профіль. Зачекайте, або зверніться до адміністратора...")
+                    message.show()
+                
             else:
                 message = WM()
                 message.set_text('Пароль не вірний!', 'При введенні пароля регістр має значення, але не мають значення пробіли до та після паролю.')
@@ -72,7 +83,7 @@ class Auth(QtWidgets.QDialog):
         db = DB()
         if db.connect():
             self.ui.label_3.setText("Є з'єднання")
-            self.ui.connection.setStyleSheet("background-color: yellow; border: solid 1px white; border-radius: 3px;")
+            self.ui.connection.setStyleSheet("background-color: green; border: solid 1px white; border-radius: 3px;")
         else:
             self.ui.label_3.setText("Немає з'єднання")
             self.ui.connection.setStyleSheet("background-color: red; border: solid 1px white; border-radius: 3px;")

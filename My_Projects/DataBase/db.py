@@ -139,24 +139,19 @@ class DB():
             return True
     
     
-    def test(self):
-        if self.hash_pass('8552') == self.get_password_by_login('admin'):
-            print('YES')
-        else:
-            print('NO')
-            print(self.hash_pass('8552'))
+    # def test(self):
+    #     if self.hash_pass('8552') == self.get_password_by_login('admin'):
+    #         print('YES')
+    #     else:
+    #         print('NO')
+    #         print(self.hash_pass('8552'))
 
 
         
 if __name__ == "__main__":
     app = QtWidgets.QApplication([])
     db = DB()
-    # print(db.get_password_by_login('admin'))
-    # print(db.get_all_logins())
-    # print(db.fetch_all())
-    # db.set_password_by_login('dmitry', '1111')
-    # print(db.get_password_by_login('dmitry'))
-    print(db.get_user_by_login('dmitry'))
+    # print(db.get_user_by_login('admin'))
     sys.exit(app.exec())
             
 
