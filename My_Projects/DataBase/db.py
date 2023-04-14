@@ -50,14 +50,14 @@ class DB():
         if self.connect():
             try:
                 with self.connection.cursor() as cursor:
-                    query = f"SELECT password, is_approved FROM user WHERE login = '{login}'"
+                    query = f"SELECT password FROM user WHERE login = '{login}'"
                     cursor.execute(query)
                     row = cursor.fetchone()
                     return row['password']
             except Exception as ex:
-                # print(ex)
-                # print('No connection...')
-                pass
+                message = WM()
+                message.set_text('Помилка отримання даних!', str(ex))
+                message.show()
             self.close_connection()
     
     
@@ -70,9 +70,9 @@ class DB():
                     cursor.execute(query, (password, login))
                     self.connection.commit()
             except Exception as ex:
-                # print(ex)
-                # print('Cant change password...')
-                pass
+                message = WM()
+                message.set_text('Помилка запису даних!', str(ex))
+                message.show()
             self.close_connection()
      
     
@@ -85,10 +85,26 @@ class DB():
                     col = cursor.fetchall()
                     return col
             except Exception as ex:
-                # print(ex)
-                # print('No connection...')
-                pass
+                message = WM()
+                message.set_text('Помилка отримання даних!', str(ex))
+                message.show()
             self.close_connection()
+    
+    
+    def get_user_by_login(self, login):
+        if self.connect():
+            try:
+                with self.connection.cursor() as cursor:
+                    query = f"SELECT * FROM user WHERE login = '{login}'"
+                    cursor.execute(query)
+                    row = cursor.fetchall()
+                    return row
+            except Exception as ex:
+                message = WM()
+                message.set_text('Помилка отримання даних!', str(ex))
+                message.show()
+            self.close_connection()
+    
     
     
     def hash_pass(self, pas):
@@ -98,7 +114,10 @@ class DB():
     
     
     def close_connection(self):
-        self.connection.close()
+        try:
+            self.connection.close()
+        except Exception as ex:
+            pass
     
     
     def is_login_exist(self, login):
@@ -109,7 +128,9 @@ class DB():
                     cursor.execute(query)
                     id = cursor.fetchone()
             except Exception as ex:
-                print(f'Немає зв`язку з таблицею\n {ex}')
+                message = WM()
+                message.set_text('Помилка отримання даних!', str(ex))
+                message.show()
             self.close_connection()
         
         if id == None:
@@ -130,16 +151,13 @@ class DB():
 if __name__ == "__main__":
     app = QtWidgets.QApplication([])
     db = DB()
+    # print(db.get_password_by_login('admin'))
     # print(db.get_all_logins())
-    print(db.fetch_all())
+    # print(db.fetch_all())
+    # db.set_password_by_login('dmitry', '1111')
+    # print(db.get_password_by_login('dmitry'))
+    print(db.get_user_by_login('dmitry'))
     sys.exit(app.exec())
             
-# db = DB()
-# # print(db.fetch_all())
-# # print(db.get_password_by_login('admin'))
-# # db.set_password_by_login('dmitry', '0110')
-# # print(db.get_password_by_login('admin'))
-# # db.test()
-# # print(db.is_login_exist('admin'))
-# print(db.get_all_logins()[0])
+
 
