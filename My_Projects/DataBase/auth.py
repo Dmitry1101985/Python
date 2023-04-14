@@ -12,6 +12,7 @@ class Auth(QtWidgets.QDialog):
         super(Auth, self).__init__()
         self.ui = Ui_AuthDialog()
         self.ui.setupUi(self)
+        self.user = None
         self.init_Ui()
         
         
@@ -36,7 +37,9 @@ class Auth(QtWidgets.QDialog):
                 db = DB()
                 user.set_user(db.get_user_by_login(self.trim_text(self.ui.login.text())))
                 if user.is_approved:
+                    self.user = user
                     print('Go to MAIN')
+                    self.close()
                 else:
                     message = WM()
                     message.set_text('Профіль не затверджений!', "Наразі адміністратор не затвердив Ваш профіль. Зачекайте, або зверніться до адміністратора...")
