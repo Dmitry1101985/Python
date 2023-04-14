@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>Icons/how_to_reg_black_48dp.svg</file>
+    <file>Icons/how_to_reg_white_48dp.svg</file>
+  </qresource>
+</RCC>
