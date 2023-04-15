@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>328</width>
-    <height>496</height>
+    <height>494</height>
    </rect>
   </property>
   <property name="font">
@@ -308,7 +308,7 @@ color: white;
 </string>
    </property>
    <property name="echoMode">
-    <enum>QLineEdit::Password</enum>
+    <enum>QLineEdit::Normal</enum>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -361,7 +361,7 @@ color: white;
 </string>
    </property>
    <property name="echoMode">
-    <enum>QLineEdit::Password</enum>
+    <enum>QLineEdit::Normal</enum>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -414,7 +414,7 @@ color: white;
 </string>
    </property>
    <property name="echoMode">
-    <enum>QLineEdit::Password</enum>
+    <enum>QLineEdit::Normal</enum>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>

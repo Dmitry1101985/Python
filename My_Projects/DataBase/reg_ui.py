@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_RegDialog(object):
     def setupUi(self, RegDialog):
         RegDialog.setObjectName("RegDialog")
-        RegDialog.resize(328, 496)
+        RegDialog.resize(328, 494)
         font = QtGui.QFont()
         font.setFamily("Calibri")
         font.setPointSize(10)
@@ -149,14 +149,14 @@ class Ui_RegDialog(object):
         self.email.setGeometry(QtCore.QRect(110, 220, 200, 26))
         font = QtGui.QFont()
         font.setFamily("Calibri")
-        font.setPointSize(12)
+        font.setPointSize(10)
         self.email.setFont(font)
         self.email.setStyleSheet("background-color: rgba(255,255,255,35);\n"
 "border: 2px solid rgba(255,255,255,90);\n"
 "border-radius: 5px;\n"
 "color: white;\n"
 "")
-        self.email.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.email.setEchoMode(QtWidgets.QLineEdit.Normal)
         self.email.setAlignment(QtCore.Qt.AlignCenter)
         self.email.setObjectName("email")
         self.label_5 = QtWidgets.QLabel(RegDialog)
@@ -180,7 +180,7 @@ class Ui_RegDialog(object):
 "border-radius: 5px;\n"
 "color: white;\n"
 "")
-        self.name.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.name.setEchoMode(QtWidgets.QLineEdit.Normal)
         self.name.setAlignment(QtCore.Qt.AlignCenter)
         self.name.setObjectName("name")
         self.label_6 = QtWidgets.QLabel(RegDialog)
@@ -193,20 +193,20 @@ class Ui_RegDialog(object):
 "background-color: none;\n"
 "border: none;")
         self.label_6.setObjectName("label_6")
-        self.password_5 = QtWidgets.QLineEdit(RegDialog)
-        self.password_5.setGeometry(QtCore.QRect(110, 320, 200, 26))
+        self.last_name = QtWidgets.QLineEdit(RegDialog)
+        self.last_name.setGeometry(QtCore.QRect(110, 320, 200, 26))
         font = QtGui.QFont()
         font.setFamily("Calibri")
         font.setPointSize(12)
-        self.password_5.setFont(font)
-        self.password_5.setStyleSheet("background-color: rgba(255,255,255,35);\n"
+        self.last_name.setFont(font)
+        self.last_name.setStyleSheet("background-color: rgba(255,255,255,35);\n"
 "border: 2px solid rgba(255,255,255,90);\n"
 "border-radius: 5px;\n"
 "color: white;\n"
 "")
-        self.password_5.setEchoMode(QtWidgets.QLineEdit.Password)
-        self.password_5.setAlignment(QtCore.Qt.AlignCenter)
-        self.password_5.setObjectName("password_5")
+        self.last_name.setEchoMode(QtWidgets.QLineEdit.Normal)
+        self.last_name.setAlignment(QtCore.Qt.AlignCenter)
+        self.last_name.setObjectName("last_name")
         self.label_7 = QtWidgets.QLabel(RegDialog)
         self.label_7.setGeometry(QtCore.QRect(140, 10, 51, 51))
         self.label_7.setStyleSheet("background-color: none;")

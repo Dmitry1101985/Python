@@ -74,7 +74,27 @@ class DB():
                 message.set_text('Помилка запису даних!', str(ex))
                 message.show()
             self.close_connection()
-     
+    
+    
+    def insert_user(self, user):
+        if self.connect():
+            try:
+                with self.connection.cursor() as cursor:
+                    password = self.hash_pass(user['password'])
+                    login = user['login']
+                    email = user['email']
+                    name = user['name']
+                    last_name = user['last_name']
+                    is_approved = user['is_approved']
+                    query = "INSERT INTO user (login, password, email, name, last_name, is_approved) VALUES (%s, %s, %s, %s, %s, %s)"
+                    cursor.execute(query, (login, password, email, name, last_name, is_approved))
+                    self.connection.commit()
+            except Exception as ex:
+                message = WM()
+                message.set_text('Помилка запису даних!', str(ex))
+                message.show()
+            self.close_connection()
+    
     
     def get_all_logins(self):
         if self.connect():

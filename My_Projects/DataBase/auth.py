@@ -5,6 +5,7 @@ from auth_ui import Ui_AuthDialog
 from warn_mes import WM
 from db import DB
 from user import User
+from reg import Reg
 
 
 class Auth(QtWidgets.QDialog):
@@ -19,6 +20,7 @@ class Auth(QtWidgets.QDialog):
     def init_Ui(self):
         self.ui.btnCancel.clicked.connect(lambda: self.close())
         self.ui.btnOk.clicked.connect(lambda: self.auth())
+        self.ui.btnReg.clicked.connect(lambda: self.to_reg_window())
         self.indicate_connection()
         pass
     
@@ -96,6 +98,12 @@ class Auth(QtWidgets.QDialog):
     
     def trim_text(self, text: str):
         return text.strip().lower()
+    
+    
+    
+    def to_reg_window(self):
+        reg = Reg()
+        reg.show()
     
     
 if __name__ == "__main__":
